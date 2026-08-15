@@ -20,7 +20,7 @@ output "pipes_pipes_enrichment" {
 }
 output "pipes_pipes_enrichment_parameters" {
   description = "Map of enrichment_parameters values across all pipes_pipes, keyed the same as var.pipes_pipes"
-  value       = { for k, v in aws_pipes_pipe.pipes_pipes : k => v.enrichment_parameters if v.enrichment_parameters != null && length(v.enrichment_parameters) > 0 }
+  value       = { for k, v in aws_pipes_pipe.pipes_pipes : k => one(v.enrichment_parameters) if v.enrichment_parameters != null && length(v.enrichment_parameters) > 0 }
 }
 output "pipes_pipes_kms_key_identifier" {
   description = "Map of kms_key_identifier values across all pipes_pipes, keyed the same as var.pipes_pipes"
@@ -28,7 +28,7 @@ output "pipes_pipes_kms_key_identifier" {
 }
 output "pipes_pipes_log_configuration" {
   description = "Map of log_configuration values across all pipes_pipes, keyed the same as var.pipes_pipes"
-  value       = { for k, v in aws_pipes_pipe.pipes_pipes : k => v.log_configuration if v.log_configuration != null && length(v.log_configuration) > 0 }
+  value       = { for k, v in aws_pipes_pipe.pipes_pipes : k => one(v.log_configuration) if v.log_configuration != null && length(v.log_configuration) > 0 }
 }
 output "pipes_pipes_name" {
   description = "Map of name values across all pipes_pipes, keyed the same as var.pipes_pipes"
@@ -52,7 +52,7 @@ output "pipes_pipes_source" {
 }
 output "pipes_pipes_source_parameters" {
   description = "Map of source_parameters values across all pipes_pipes, keyed the same as var.pipes_pipes"
-  value       = { for k, v in aws_pipes_pipe.pipes_pipes : k => v.source_parameters if v.source_parameters != null && length(v.source_parameters) > 0 }
+  value       = { for k, v in aws_pipes_pipe.pipes_pipes : k => one(v.source_parameters) if v.source_parameters != null && length(v.source_parameters) > 0 }
 }
 output "pipes_pipes_tags" {
   description = "Map of tags values across all pipes_pipes, keyed the same as var.pipes_pipes"
@@ -68,6 +68,6 @@ output "pipes_pipes_target" {
 }
 output "pipes_pipes_target_parameters" {
   description = "Map of target_parameters values across all pipes_pipes, keyed the same as var.pipes_pipes"
-  value       = { for k, v in aws_pipes_pipe.pipes_pipes : k => v.target_parameters if v.target_parameters != null && length(v.target_parameters) > 0 }
+  value       = { for k, v in aws_pipes_pipe.pipes_pipes : k => one(v.target_parameters) if v.target_parameters != null && length(v.target_parameters) > 0 }
 }
 
